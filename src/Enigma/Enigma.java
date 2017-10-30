@@ -22,7 +22,7 @@ class Enigma {
         int indiceCaracter = Constantes.indiceCaracter(c);
 
         incrementarRotores(rotorIzq, rotorMed, rotorDer);
-        //indiceCaracter = etiqueta.caracterCifrado(indiceCaracter);
+        indiceCaracter = etiqueta.caracterCifrado(indiceCaracter);
         indiceCaracter = rotorDer.caracterCifrado(0, indiceCaracter);
         indiceCaracter = rotorMed.caracterCifrado(0, indiceCaracter);
         indiceCaracter = rotorIzq.caracterCifrado(0, indiceCaracter);
@@ -30,7 +30,7 @@ class Enigma {
         indiceCaracter = rotorIzq.caracterCifrado(1, indiceCaracter);
         indiceCaracter = rotorMed.caracterCifrado(1, indiceCaracter);
         indiceCaracter = rotorDer.caracterCifrado(1, indiceCaracter);
-        //indiceCaracter = etiqueta.caracterCifrado(indiceCaracter);
+        indiceCaracter = etiqueta.caracterCifrado(indiceCaracter);
 
         c = Constantes.alfabeto.charAt(indiceCaracter);
         return c;
