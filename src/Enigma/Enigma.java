@@ -7,6 +7,7 @@ class Enigma {
     private Rotor rotorDer;
     private Reflector reflector;
     private Etiquetas etiqueta;
+    private int p = 0;
 
     // Inicializar la máquina Enigma con la configuración del usuario
     Enigma(Rotor rotorIzq, Rotor rotorMed, Rotor rotorDer, Reflector reflector, Etiquetas etiqueta) {
@@ -23,6 +24,13 @@ class Enigma {
 
         incrementarRotores(rotorIzq, rotorMed, rotorDer);
         indiceCaracter = etiqueta.caracterCifrado(indiceCaracter);
+        if (rotorDer.posicionRotor() == rotorDer.dobleSalto() && p != 1) {
+            p = 1;
+            if (rotorMed.posicionRotor() == rotorMed.saltoRotor()) {
+                rotorIzq.incrementarPosicion();
+            }
+            rotorMed.incrementarPosicion();
+        }
         indiceCaracter = rotorDer.caracterCifrado(0, indiceCaracter);
         indiceCaracter = rotorMed.caracterCifrado(0, indiceCaracter);
         indiceCaracter = rotorIzq.caracterCifrado(0, indiceCaracter);

@@ -5,7 +5,6 @@ class Rotor {
     private String configuracionRotor;
     private int posicionRotor;
     private int saltoRotor;
-    private int anillo = Constantes.indiceCaracter("A".charAt(0));
 
     // Se inicializa el rotor según su número y configuración
     Rotor(String configuracionRotor, char posicionRotor, char saltoRotor) {
@@ -16,7 +15,7 @@ class Rotor {
 
     int caracterCifrado(int direccion, int numero) {
 
-        numero = numero - anillo;
+        numero = numero - 1;
         numero = normalizar(numero);
 
         numero = numero + posicionRotor;
@@ -36,7 +35,7 @@ class Rotor {
         numero = numero - posicionRotor;
         numero = normalizar(numero);
 
-        numero = numero + anillo;
+        numero = numero + 1;
         numero = normalizar(numero);
 
         return numero;
@@ -65,5 +64,9 @@ class Rotor {
 
     int saltoRotor() {
         return saltoRotor;
+    }
+
+    int dobleSalto() {
+        return saltoRotor + 2;
     }
 }
